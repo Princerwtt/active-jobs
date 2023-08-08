@@ -1,8 +1,20 @@
 const express = require('express');
+const cors = require('cors'); // Import the cors module
 const app = express();
+app.use(cors());
+app.get('/api/active-jobs',(req,res)=>{
+  res.json("welcome");
+});
+app.get('/secret',(req,res)=>{
+  const secret = Math.floor(Math.random()*100)
+  res.json({secret})
+})
 const port = process.env.PORT || 3000;
+app.listen(port,()=>{
+  console.log(`server running`);
+})
 
-const ActiveJobData =  {
+const ActiveJobData = {
   type: 'Active Jobs',
   countPerDay: {
     Received: [26, 45, 77, 45, 95, 22, 65, 30, 100, 22, 53, 81, 22, 65, 88, 50, 28, 100, 22, 74, 25, 69, 22, 65, 34, 74, 43, 22, 69, 22],
